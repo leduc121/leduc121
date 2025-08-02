@@ -15,7 +15,7 @@ A passionate **.NET Backend Developer** from Ho Chi Minh City, Vietnam. I specia
 
 ### 👨‍💻 A Little More About Me
 
-- 🔭 I’m currently working as a **Backend Developer** at **[Tên công ty của bạn]**, where I contribute to building and maintaining our core backend services.
+- 🔭 I’m currently studying and coding as a **Backend Developer**.
 - 🌱 I'm focusing on deepening my expertise in **Microservices Architecture**, **Domain-Driven Design (DDD)**, and cloud platforms like **Azure & AWS**.
 - 💬 Feel free to ask me about anything related to **C#**, **.NET**, **ASP.NET Core**, and building scalable backend applications.
 - 📫 How to reach me: **quangducle.127@gmail.com**
