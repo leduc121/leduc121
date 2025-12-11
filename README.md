@@ -1,13 +1,13 @@
 # Hi there, I'm Lê Nguyễn Quang Đức! 👋
 
-<p align="center">
+<div align="center">
   <a href="https://github.com/leduc121">
     <img src="https://github-readme-stats.vercel.app/api?username=leduc121&show_icons=true&theme=tokyonight&icon_color=79ff97&hide_border=true" alt="GitHub Stats" />
   </a>
   <a href="https://github.com/leduc121">
     <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=leduc121&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
   </a>
-</p>
+</div>
 
 A passionate **.NET Backend Developer** from Ho Chi Minh City, Vietnam. I specialize in designing and building high-performance, stable, and scalable systems. I thrive on learning new technologies and applying software engineering best practices to deliver robust and efficient solutions.
 
