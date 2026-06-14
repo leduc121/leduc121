@@ -18,6 +18,7 @@ A passionate **.NET Backend Developer** from Ho Chi Minh City, Vietnam. I specia
 - 🔭 I’m currently studying and coding as a **Backend Developer**.
 - 🌱 I'm focusing on deepening my expertise in **Microservices Architecture**, **Domain-Driven Design (DDD)**, and cloud platforms like **Azure & AWS**.
 - 💬 Feel free to ask me about anything related to **C#**, **.NET**, **ASP.NET Core**, and building scalable backend applications.
+  
 -📫 How to reach me: **quangducle.127@gmail.com** , **[LinkedIn](https://www.linkedin.com/in/l%C3%AA-%C4%91%E1%BB%A9c-748509366/)**
 
 ---
@@ -26,8 +27,8 @@ A passionate **.NET Backend Developer** from Ho Chi Minh City, Vietnam. I specia
 
 Here are some of the key technologies and tools I work with:
 
-- **Languages:** `C#`
-- **Frameworks & Runtimes:** `.NET (8/7/6)`, `ASP.NET Core`, `Entity Framework Core`
+- **Languages:** `C#,TypeScript`
+- **Frameworks & Runtimes:** `.NET (8/7/6)`, `ASP.NET Core`, `Entity Framework Core`,`NestJs`,`React`
 - **Databases:** `Microsoft SQL Server`, `PostgreSQL`, `Redis`
 - **Architecture & Paradigms:** `RESTful APIs`, `Microservices`, `Clean Architecture`, `Domain-Driven Design (DDD)`
 - **Cloud & DevOps:** `Azure (App Service, Functions)`, `AWS`, `Docker`, `CI/CD (GitHub Actions, Azure DevOps)`
