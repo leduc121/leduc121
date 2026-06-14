@@ -59,5 +59,5 @@ Here are some of the key technologies and tools I work with:
 
 ### 📫 Get In Touch
 
-- 💼 Connect with me on LinkedIn: **[https://www.linkedin.com/profile](https://www.linkedin.com/in/l%C3%AA-%C4%91%E1%BB%A9c-748509366/)**
+- 💼 Connect with me on LinkedIn: **[LinkedIn](https://www.linkedin.com/in/l%C3%AA-%C4%91%E1%BB%A9c-748509366/)**
 - 📧 Email me at: **quangducle.127@gmail.com**
