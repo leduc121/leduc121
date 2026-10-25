@@ -15,12 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=leduc121&theme=tokyonight" alt="GitHub contribution overview" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=leduc121&theme=tokyonight" alt="GitHub stats" width="49%" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=leduc121&theme=tokyonight" alt="Repositories per language" width="49%" />
+  <img src="./github-cards.png" alt="Live GitHub dashboard for Lê Nguyễn Quang Đức" width="1000" />
 </p>
 
 <h2 align="center">Tech Stack &amp; Tools</h2>

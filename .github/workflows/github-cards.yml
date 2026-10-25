@@ -1,0 +1,46 @@
+name: Update GitHub dashboard
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - github-cards.png
+      - github-card-updated.txt
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-profile-dashboard
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install image renderer
+        run: npm install --no-save sharp@0.34.4
+
+      - name: Generate dashboard for leduc121
+        env:
+          GITHUB_USERNAME: leduc121
+        run: node scripts/generate-github-card.mjs
+
+      - name: Commit refreshed dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add github-cards.png github-card-updated.txt
+          git diff --cached --quiet || git commit -m "chore: refresh GitHub dashboard"
+          git push
