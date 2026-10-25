@@ -23,45 +23,78 @@ font = ImageFont.truetype(FONT_PATH, 16)
 bold = ImageFont.truetype(BOLD_PATH, 16)
 small = ImageFont.truetype(FONT_PATH, 13)
 
-commands = [
-    (
-        "whoami",
-        [
-            ("Lê Nguyễn Quang Đức  /  leduc121", TEXT),
-            ("Backend & Mobile Developer · Ho Chi Minh City, Vietnam", MUTED),
-        ],
-    ),
-    (
-        "cat career.json",
-        [
-            ('{ "role": "Backend Developer",', PURPLE),
-            ('  "community": "FCAJ Ambassador · AWS Study Group",', CYAN),
-            ('  "focus": "AWS Solutions Architect" }', MINT),
-        ],
-    ),
-    (
-        "./stack --list",
-        [
-            ("languages   C# · TypeScript · Dart · Swift", TEXT),
-            ("frameworks  .NET · ASP.NET Core · NestJS · React", TEXT),
-            ("mobile      Flutter · SwiftUI", TEXT),
-            ("data        SQL Server · PostgreSQL · Redis", TEXT),
-            ("cloud       AWS · Azure · Docker · GitHub Actions", TEXT),
-        ],
-    ),
-    (
-        "system-check --developer",
-        [
-            ("[ OK ] scalable backend systems", GREEN),
-            ("[ OK ] clean architecture & microservices", GREEN),
-            ("[ OK ] cloud learning & hands-on projects", GREEN),
-            ("[RUN ] building · learning · sharing", YELLOW),
-        ],
-    ),
-    (
-        'echo "Build. Learn. Share. Repeat."',
-        [("Build. Learn. Share. Repeat.", CYAN)],
-    ),
+scenes = [
+    [
+        (
+            "whoami",
+            [
+                ("Lê Nguyễn Quang Đức  /  leduc121", TEXT),
+                ("Backend & Mobile Developer · Ho Chi Minh City, Vietnam", MUTED),
+            ],
+        ),
+        (
+            "cat about.json",
+            [
+                ('{ "mission": "build stable systems that last",', PURPLE),
+                ('  "community": "FCAJ Ambassador · AWS Study Group",', CYAN),
+                ('  "learning": "AWS Solutions Architect",', MINT),
+                ('  "curious_about": ["cloud", "mobile", "robotics"] }', YELLOW),
+            ],
+        ),
+        (
+            "status --now",
+            [
+                ("[BUILDING] scalable backend services", GREEN),
+                ("[LEARNING] cloud architecture & mobile development", GREEN),
+                ("[SHARING ] knowledge with the developer community", GREEN),
+            ],
+        ),
+    ],
+    [
+        (
+            "ls ~/projects --featured",
+            [
+                ("★ Hurricane_Monitor", CYAN),
+                ("  TypeScript · real-time hurricane monitoring · 20 stars", MUTED),
+                ("★ GreenHackathon_AgricultureApp", MINT),
+                ("  TypeScript · technology for smarter agriculture · 12 stars", MUTED),
+                ("★ molmoact2_so101arm", PURPLE),
+                ("  Python · vision-language-action research with SO-101", MUTED),
+            ],
+        ),
+        (
+            "git philosophy",
+            [
+                ("solve real problems", TEXT),
+                ("design before scaling", TEXT),
+                ("ship → observe → improve", YELLOW),
+            ],
+        ),
+    ],
+    [
+        (
+            "./stack --compact",
+            [
+                ("backend  C# · .NET · ASP.NET Core · NestJS", TEXT),
+                ("mobile   Flutter · Dart · SwiftUI", TEXT),
+                ("data     SQL Server · PostgreSQL · Redis", TEXT),
+                ("cloud    AWS · Azure · Docker · GitHub Actions", TEXT),
+            ],
+        ),
+        (
+            "system-check --developer",
+            [
+                ("[ OK ] clean architecture & microservices", GREEN),
+                ("[ OK ] hands-on learning", GREEN),
+                ("[ OK ] curiosity, discipline, persistence", GREEN),
+                ("[RUN ] building · learning · sharing", YELLOW),
+            ],
+        ),
+        (
+            'echo "Build. Learn. Share. Repeat."',
+            [("Build. Learn. Share. Repeat.", CYAN)],
+        ),
+    ],
 ]
 
 
@@ -110,28 +143,43 @@ def render(lines, typed_command, cursor, frame_index):
 
 frames = []
 durations = []
-history = []
 frame_index = 0
 
-for command, output in commands:
-    for index in range(len(command) + 1):
-        frames.append(render(history, command[:index], True, frame_index))
-        durations.append(42)
+for scene_index, commands in enumerate(scenes):
+    history = []
+
+    if scene_index:
+        clear_command = "clear"
+        for index in range(len(clear_command) + 1):
+            frames.append(render([], clear_command[:index], True, frame_index))
+            durations.append(48)
+            frame_index += 1
+
+        frames.append(render([], None, False, frame_index))
+        durations.append(380)
         frame_index += 1
 
-    history.append((command, TEXT, True))
-    for value, color in output:
-        history.append((value, color, False))
-        frames.append(render(history, None, False, frame_index))
-        durations.append(240)
+    for command, output in commands:
+        for index in range(len(command) + 1):
+            frames.append(render(history, command[:index], True, frame_index))
+            durations.append(42)
+            frame_index += 1
+
+        history.append((command, TEXT, True))
+        for value, color in output:
+            history.append((value, color, False))
+            frames.append(render(history, None, False, frame_index))
+            durations.append(240)
+            frame_index += 1
+
+        durations[-1] += 480
+
+    for blink in range(5):
+        frames.append(render(history, "", blink % 2 == 0, frame_index))
+        durations.append(280)
         frame_index += 1
 
-    durations[-1] += 420
-
-for blink in range(8):
-    frames.append(render(history, "", blink % 2 == 0, frame_index))
-    durations.append(280)
-    frame_index += 1
+    durations[-1] = 1350
 
 # Pause on the completed terminal, then loop back to the first command.
 durations[-1] = 1600
