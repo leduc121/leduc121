@@ -33,16 +33,41 @@ const [insightsResponse, rankResponse] = await Promise.all([
   download(rankUrl),
 ]);
 
+const rankMarkup = rankResponse.toString("utf8");
+const rankMatch = rankMarkup.match(
+  /data-testid="percentile-rank-value"[\s\S]*?>\s*([\d.]+)%\s*<\/text>/,
+);
+const levelMatch = rankMarkup.match(/GitHub Rank, Rank:\s*([^<]+)<\/title>/);
+
+if (!rankMatch || !levelMatch) {
+  throw new Error("Could not extract the GitHub percentile and letter rank");
+}
+
+const percentage = Number.parseFloat(rankMatch[1]);
+const level = levelMatch[1].trim();
+const rankColors = {
+  S: "#fbbf24",
+  "A+": "#c9a7ff",
+  A: "#c9a7ff",
+  "A-": "#c9a7ff",
+  "B+": "#5ad1ff",
+  B: "#5ad1ff",
+  "B-": "#5ad1ff",
+  "C+": "#7affd9",
+  C: "#7affd9",
+};
+const rankColor = rankColors[level] || "#5ad1ff";
+
 const originalInsights = insightsResponse.toString("utf8");
 const customBuilderBadge = `
       <g transform="translate(290, 58)">
-        <circle cx="36" cy="36" r="40" fill="#0d1117" stroke="#58a6ff" stroke-width="2.5"/>
-        <circle cx="36" cy="36" r="32" fill="#58a6ff" opacity="0.12"/>
-        <text x="36" y="43" text-anchor="middle" font-size="20" font-weight="700" fill="#7affd9" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="1">DEV</text>
+        <circle cx="36" cy="36" r="40" fill="#0d1117" stroke="${rankColor}" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="32" fill="${rankColor}" opacity="0.12"/>
+        <text x="36" y="44" text-anchor="middle" font-size="26" font-weight="700" fill="${rankColor}" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0.5">${level}</text>
       </g>
       <g transform="translate(286, 146)">
-        <rect x="0" y="0" width="80" height="20" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="1" stroke-opacity="0.7"/>
-        <text x="40" y="14" text-anchor="middle" font-size="9" font-weight="600" fill="#7affd9" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0.8">BUILDER</text>
+        <rect x="0" y="0" width="80" height="20" rx="6" fill="#0d1117" stroke="${rankColor}" stroke-width="1" stroke-opacity="0.7"/>
+        <text x="40" y="14" text-anchor="middle" font-size="9" font-weight="600" fill="${rankColor}" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0.8">RANK</text>
       </g>`;
 
 const customizedInsights = originalInsights.replace(
@@ -56,16 +81,6 @@ if (customizedInsights === originalInsights) {
 
 const insightsSvg = Buffer.from(customizedInsights);
 
-const rankMarkup = rankResponse.toString("utf8");
-const rankMatch = rankMarkup.match(
-  /data-testid="percentile-rank-value"[\s\S]*?>\s*([\d.]+)%\s*<\/text>/,
-);
-
-if (!rankMatch) {
-  throw new Error("Could not extract the GitHub percentile rank");
-}
-
-const percentage = Number.parseFloat(rankMatch[1]);
 const size = 125;
 const center = size / 2;
 const radius = 55;
@@ -97,7 +112,7 @@ await sharp(insightsPng)
 const metadata = await sharp("github-cards.png").metadata();
 await fs.writeFile(
   "github-card-updated.txt",
-  `${new Date().toISOString()} | ${username} | top ${percentage}% | ${metadata.width}x${metadata.height}\n`,
+  `${new Date().toISOString()} | ${username} | rank ${level} | top ${percentage}% | ${metadata.width}x${metadata.height}\n`,
 );
 
-console.log(`Generated github-cards.png for ${username} (${metadata.width}x${metadata.height})`);
+console.log(`Generated github-cards.png for ${username}: rank ${level}, top ${percentage}% (${metadata.width}x${metadata.height})`);
