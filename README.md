@@ -10,6 +10,14 @@
   <img src="./github-cards.png" alt="Live GitHub dashboard for Lê Nguyễn Quang Đức" width="1000" />
 </p>
 
+<h2 align="center">Star History</h2>
+
+<p align="center">
+  <a href="https://www.star-history.com/#leduc121/Hurricane_Monitor&leduc121/GreenHackathon_AgricultureApp&Date">
+    <img src="https://api.star-history.com/svg?repos=leduc121/Hurricane_Monitor,leduc121/GreenHackathon_AgricultureApp&type=Date&theme=dark" alt="Star history of Hurricane Monitor and GreenHackathon Agriculture App" width="800" />
+  </a>
+</p>
+
 <h2 align="center">Tech Stack &amp; Tools</h2>
 
 <div align="center">
