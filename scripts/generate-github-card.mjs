@@ -28,10 +28,33 @@ const rankUrl =
   "&rank_icon=percentile&hide=stars,commits,prs,issues,contribs" +
   "&hide_title=true&hide_border=true&bg_color=00000000";
 
-const [insightsSvg, rankResponse] = await Promise.all([
+const [insightsResponse, rankResponse] = await Promise.all([
   download(insightsUrl),
   download(rankUrl),
 ]);
+
+const originalInsights = insightsResponse.toString("utf8");
+const customBuilderBadge = `
+      <g transform="translate(290, 58)">
+        <circle cx="36" cy="36" r="40" fill="#0d1117" stroke="#58a6ff" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="32" fill="#58a6ff" opacity="0.12"/>
+        <text x="36" y="43" text-anchor="middle" font-size="20" font-weight="700" fill="#7affd9" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="1">DEV</text>
+      </g>
+      <g transform="translate(286, 146)">
+        <rect x="0" y="0" width="80" height="20" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="1" stroke-opacity="0.7"/>
+        <text x="40" y="14" text-anchor="middle" font-size="9" font-weight="600" fill="#7affd9" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0.8">BUILDER</text>
+      </g>`;
+
+const customizedInsights = originalInsights.replace(
+  /<g transform="translate\(290, 58\)">[\s\S]*?<\/g>\s*<g transform="translate\(296, 146\)">[\s\S]*?<\/g>/,
+  customBuilderBadge,
+);
+
+if (customizedInsights === originalInsights) {
+  throw new Error("Could not replace the third-party letter rank with the custom builder badge");
+}
+
+const insightsSvg = Buffer.from(customizedInsights);
 
 const rankMarkup = rankResponse.toString("utf8");
 const rankMatch = rankMarkup.match(
