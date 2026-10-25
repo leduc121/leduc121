@@ -3,15 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="./card-profile.svg" alt="Lê Nguyễn Quang Đức — backend, cloud, and mobile developer profile" width="780" />
-</p>
-
-<p align="center">
-  <img src="./card-skills.svg" alt="Lê Nguyễn Quang Đức — technical skills and career dashboard" width="960" />
-</p>
-
-<p align="center">
-  <img src="./card-system-check.svg" alt="Lê Nguyễn Quang Đức — developer system check" width="780" />
+  <img src="./terminal-demo.gif" alt="Animated terminal profile for Lê Nguyễn Quang Đức" width="1000" />
 </p>
 
 <p align="center">
