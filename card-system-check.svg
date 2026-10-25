@@ -10,8 +10,8 @@
 </defs>
 <g clip-path="url(#win3)">
   <rect width="780" height="500" fill="url(#sky3)"/>
-  <g filter="url(#blur3)" opacity=".85"><path d="M234 500 C351 275 484 310 608 90 L764 25 L764 200 C624 310 484 475 406 500 Z" fill="url(#ribA3)"/></g>
-  <g filter="url(#blurS3)" opacity=".55"><path d="M429 500 C515 300 608 290 702 110 L780 150 L780 350 C671 380 593 460 546 500 Z" fill="url(#ribB3)"/></g>
+  <g filter="url(#blur3)" opacity=".85"><animateTransform attributeName="transform" type="translate" values="-70 12;45 -10;-70 12" dur="8.5s" repeatCount="indefinite"/><path d="M234 500 C351 275 484 310 608 90 L764 25 L764 200 C624 310 484 475 406 500 Z" fill="url(#ribA3)"/></g>
+  <g filter="url(#blurS3)" opacity=".55"><animateTransform attributeName="transform" type="translate" values="55 -8;-45 16;55 -8" dur="11.5s" repeatCount="indefinite"/><path d="M429 500 C515 300 608 290 702 110 L780 150 L780 350 C671 380 593 460 546 500 Z" fill="url(#ribB3)"/></g>
   <g fill="#fff" opacity=".55"><circle cx="94" cy="100" r="1"/><circle cx="320" cy="50" r="1.2"/><circle cx="515" cy="60" r="1"/><circle cx="725" cy="290" r=".9"/><circle cx="655" cy="40" r="1.1"/></g>
   <path d="M0 500 L0 440 L62 420 L117 450 L429 430 L530 400 L601 420 L671 380 L741 420 L780 410 L780 500 Z" fill="#050813" opacity=".92"/>
   <rect width="780" height="500" fill="url(#shade3)"/>

@@ -10,8 +10,8 @@
 </defs>
 <g clip-path="url(#win2)">
   <rect width="960" height="943" fill="url(#sky2)"/>
-  <g filter="url(#blur2)" opacity=".85"><path d="M288 943 C432 519 595 585 749 170 L941 47 L941 377 C768 585 595 896 499 943 Z" fill="url(#ribA2)"/></g>
-  <g filter="url(#blurS2)" opacity=".55"><path d="M528 943 C634 566 749 547 864 207 L960 283 L960 660 C826 717 730 868 672 943 Z" fill="url(#ribB2)"/></g>
+  <g filter="url(#blur2)" opacity=".85"><animateTransform attributeName="transform" type="translate" values="-85 20;55 -15;-85 20" dur="9s" repeatCount="indefinite"/><path d="M288 943 C432 519 595 585 749 170 L941 47 L941 377 C768 585 595 896 499 943 Z" fill="url(#ribA2)"/></g>
+  <g filter="url(#blurS2)" opacity=".55"><animateTransform attributeName="transform" type="translate" values="65 -10;-55 22;65 -10" dur="12s" repeatCount="indefinite"/><path d="M528 943 C634 566 749 547 864 207 L960 283 L960 660 C826 717 730 868 672 943 Z" fill="url(#ribB2)"/></g>
   <g fill="#fff" opacity=".55"><circle cx="115" cy="189" r="1"/><circle cx="394" cy="94" r="1.2"/><circle cx="634" cy="113" r="1"/><circle cx="893" cy="547" r=".9"/><circle cx="806" cy="75" r="1.1"/></g>
   <path d="M0 943 L0 830 L77 792 L144 849 L528 811 L653 754 L739 792 L826 717 L912 792 L960 773 L960 943 Z" fill="#050813" opacity=".92"/>
   <rect width="960" height="943" fill="url(#shade2)"/>
